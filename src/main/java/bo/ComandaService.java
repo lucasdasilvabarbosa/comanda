@@ -19,13 +19,13 @@ public class ComandaService {
     private  ComandaDAO comandaDAO = new ComandaDAO();
     private  ComandaConverter comandaConverter = new ComandaConverter();
 
-    public void salvar(ComandaDTO comandaDTO){
+    public ComandaDTO salvar(ComandaDTO comandaDTO){
 
         /**
          *esse metodo antes de salvar converte a comanda de dto para um obj Entity
          */
-         comandaDAO.salvar(comandaConverter.converterParaEntity(comandaDTO));
-
+       Comanda c =  comandaDAO.salvar(comandaConverter.converterParaEntity(comandaDTO));
+        return comandaConverter.converterParaDTO(c);
     }
 
     public List<ComandaDTO> buscarTodos(){
@@ -40,5 +40,11 @@ public class ComandaService {
         return comandaDTOs;
     }
 
+    public ComandaDTO buscarComandaMesa(int id_mesa){
+        Comanda comanda = comandaDAO.buscarComandaMesa(id_mesa);
+        ComandaDTO comandaDTO = comandaConverter.converterParaDTO(comanda);
+
+        return comandaDTO;
+    }
 
 }

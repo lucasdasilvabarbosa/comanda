@@ -1,5 +1,7 @@
 package DTO;
 
+import Entity.Mesa;
+
 /**
  * Created by lucas on 24/08/2016.
  */
@@ -9,6 +11,15 @@ public class MesaDTO {
     private int numeroDaMesa;
 
     private boolean comandaAberta;
+
+    public MesaDTO(int id) {
+        this.id = id;
+    }
+
+    public MesaDTO() {
+    }
+
+
 
     public int getId() {
         return id;

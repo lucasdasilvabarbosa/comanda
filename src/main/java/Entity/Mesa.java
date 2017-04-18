@@ -22,6 +22,14 @@ public class Mesa {
     private List<Comanda> comandas;
 
 
+    public Mesa(int id) {
+        this.id = id;
+    }
+
+    public Mesa() {
+    }
+
+
     public int getId() {
         return id;
     }

@@ -13,23 +13,26 @@ import java.util.List;
 public class PizzaDAO {
     EntityManager em;
 
-    public PizzaDAO(){
+    public PizzaDAO() {
         em = JPAUtil.abreConexao();
 
     }
 
-    public void salvar(Pizza pizza) {
+    public Pizza salvar(Pizza pizza) {
         EntityTransaction tx = em.getTransaction();
+        Pizza p;
         try {
             tx.begin();
-            em.merge(pizza);
+            p = em.merge(pizza);
             tx.commit();
+            return p;
         } catch (Exception e) {
             tx.rollback();
         }
+        return null;
     }
 
-    public List<Pizza> buscarTodos(){
+    public List<Pizza> buscarTodos() {
         Query consulta = em.createQuery("select p from Pizza p ORDER BY p.id");
         return consulta.getResultList();
 

@@ -19,9 +19,11 @@ public class PizzaService {
    private PizzaDAO pizzaDAO = new PizzaDAO();
    private PizzaConverter pizzaConverter = new PizzaConverter();
 
-   public void salvar(PizzaDTO pizzaDTO){
-       pizzaDAO.salvar(pizzaConverter.converterParaEntity(pizzaDTO));
+   public PizzaDTO salvar(PizzaDTO pizzaDTO){
+       Pizza p;
+       p  = pizzaDAO.salvar(pizzaConverter.converterParaEntity(pizzaDTO));
 
+       return pizzaConverter.converterParaDTO(p);
    }
 
    public List<PizzaDTO> buscarTodos(){

@@ -16,8 +16,7 @@ public class ComandaConverter {
 
     public Comanda converterParaEntity(ComandaDTO comandaDTO) {
         Comanda comanda = new Comanda();
-        Mesa mesa = new Mesa();
-        mesa.setId(comandaDTO.getId_mesa());
+        Mesa mesa = new Mesa(comandaDTO.getId_mesa());
 
         List<PizzaComanda> pizzas = new ArrayList<PizzaComanda>();
         List<BebidaComanda> bebidas = new ArrayList<BebidaComanda>();
@@ -25,11 +24,11 @@ public class ComandaConverter {
         comanda.setId(comandaDTO.getId());
         comanda.setIdMesa(mesa);
 
-         for(PizzaComandaDTO p : comandaDTO.getPizzaDTOs()){
-              pizzas.add(pizzaComandaConverter.converterParaEntity(p));
-         }
+        for (PizzaComandaDTO p : comandaDTO.getPizzaDTOs()) {
+            pizzas.add(pizzaComandaConverter.converterParaEntity(p));
+        }
 
-        for(BebidaComandaDTO b : comandaDTO.getBebidaDTOs()){
+        for (BebidaComandaDTO b : comandaDTO.getBebidaDTOs()) {
             bebidas.add(bebidaComandaConverter.converterParaEntity(b));
         }
 
@@ -39,11 +38,23 @@ public class ComandaConverter {
         return comanda;
     }
 
-    public ComandaDTO converterParaDTO(Comanda comanda){
-      ComandaDTO comandaDTO = new ComandaDTO();
+    public ComandaDTO converterParaDTO(Comanda comanda) {
+        ComandaDTO comandaDTO = new ComandaDTO(comanda.getIdMesa().getId());
 
 
+        List<PizzaComandaDTO> pizzaComandaDTOs = new ArrayList<PizzaComandaDTO>();
+        List<BebidaComandaDTO> bebidaComandaDTOs = new ArrayList<BebidaComandaDTO>();
 
+        for (PizzaComanda p : comanda.getPizzas()){
+            pizzaComandaDTOs.add(pizzaComandaConverter.converterParaDTO(p));
+        }
+
+        for(BebidaComanda b : comanda.getBebidas()){
+            bebidaComandaDTOs.add(bebidaComandaConverter.converterParaDTO(b));
+        }
+
+        comandaDTO.setPizzaDTOs(pizzaComandaDTOs);
+        comandaDTO.setBebidaDTOs(bebidaComandaDTOs);
 
         return comandaDTO;
 

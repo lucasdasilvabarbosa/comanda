@@ -20,7 +20,7 @@ public class PizzaController {
 
 
 
-    PizzaService pizzaService;
+    PizzaService pizzaService = new PizzaService();
 
 
     @POST
@@ -29,12 +29,11 @@ public class PizzaController {
     @Produces("application/json")
     public Response salvar(PizzaDTO pizzaDTO) {
 
-        pizzaService.salvar(pizzaDTO);
+        PizzaDTO p = pizzaService.salvar(pizzaDTO);
 
-        return Response.status(200).entity(pizzaDTO).build();
+        return Response.status(200).entity(p).build();
     }
 
-    List<Pizza> pizzas = new ArrayList<Pizza>();
 
 
     @GET

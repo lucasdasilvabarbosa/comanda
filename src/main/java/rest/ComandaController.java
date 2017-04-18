@@ -6,6 +6,7 @@ import bo.ComandaService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by lucas on 01/09/2016.
@@ -20,20 +21,28 @@ public class ComandaController {
     @Path("/salvar")
     @Produces("application/json")
     @Consumes("application/json")
-    public Response Salvar(ComandaDTO comandaDTO) {
+    public Response salvar(ComandaDTO comandaDTO) {
 
-
-        return Response.status(200).build();
+        ComandaDTO c = comandaService.salvar(comandaDTO);
+        return Response.status(200).entity(c).build();
 
     }
 
     @GET
-    @Path("/buscarcomanda")
+    @Path("/buscarcomandas")
+    @Produces("application/json")
     public Response BuscarTodos(){
-
-        return Response.status(200).entity(comandaService.buscarTodos()).build();
+        List<ComandaDTO> comandaDTOs = comandaService.buscarTodos();
+        return Response.status(200).entity(comandaDTOs).build();
     }
 
+    @GET
+    @Path("buscarComanda/{idMesa}")
+    @Produces("application/json")
+    public Response buscarComanda(@PathParam("idMesa") int idMesa){
+
+      return Response.status(200).entity(comandaService.buscarComandaMesa(idMesa)).build();
+    }
 
 
 

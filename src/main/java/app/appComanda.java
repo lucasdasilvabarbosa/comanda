@@ -20,6 +20,7 @@ public class appComanda extends Application {
             classes.add(PizzaController.class);
             classes.add(mensagemController.class);
             classes.add(ComandaController.class);
+            classes.add(BebidaController.class);
             return classes;
         }
 }

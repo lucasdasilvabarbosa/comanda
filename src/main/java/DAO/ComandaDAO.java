@@ -19,21 +19,28 @@ public class ComandaDAO {
 
     }
 
-    public void salvar(Comanda comanda) {
+    public Comanda salvar(Comanda comanda) {
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
-            em.merge(comanda);
+           Comanda c =  em.merge(comanda);
             tx.commit();
+            return c;
         } catch (Exception e) {
             tx.rollback();
         }
+        return null;
     }
 
     public List<Comanda> buscarTodos() {
         //JPQL
         Query consulta = em.createQuery("select c from Comanda c ORDER BY c.id");
         return consulta.getResultList();
+    }
+
+    public Comanda buscarComandaMesa(int idMesa){
+        Query consulta = em.createQuery("select c from Comanda c, Mesa m WHERE c.id_mesa.id = m.id and m.comandaAberta");
+        return (Comanda) consulta.getSingleResult();
     }
 
 }

@@ -11,6 +11,13 @@ public class ComandaDTO {
     private List<PizzaComandaDTO> pizzaDTOs;
     private List<BebidaComandaDTO> bebidaDTOs;
 
+    public ComandaDTO() {
+    }
+
+    public ComandaDTO(int id_mesa) {
+        this.id_mesa = id_mesa;
+    }
+
     public int getId() {
         return id;
     }
