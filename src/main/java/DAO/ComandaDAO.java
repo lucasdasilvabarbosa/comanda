@@ -21,9 +21,10 @@ public class ComandaDAO {
 
     public Comanda salvar(Comanda comanda) {
         EntityTransaction tx = em.getTransaction();
+        Comanda c;
         try {
             tx.begin();
-           Comanda c =  em.merge(comanda);
+            c =  em.merge(comanda);
             tx.commit();
             return c;
         } catch (Exception e) {

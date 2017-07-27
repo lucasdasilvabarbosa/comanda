@@ -1,15 +1,17 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by lucas on 26/07/2016.
  */
 
 @Entity
-public class BebidaComanda {
+public class BebidaComanda implements Serializable {
     @Id
-    @SequenceGenerator(name = "seq_bebida_comanda", sequenceName = "seq_pedido", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "seq_bebida_comanda", sequenceName = "seq_bebida_comanda", allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "seq_bebida_comanda" )
     @Column(name = "id_bebida_comanda")
     private int id;
 

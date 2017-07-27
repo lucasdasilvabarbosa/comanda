@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,10 +9,11 @@ import java.util.List;
  */
 
 @Entity
-public class Bebida {
+public class Bebida implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "seq_bebida", sequenceName = "seq_bebida", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "seq_bebida", sequenceName = "seq_bebida", allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "seq_bebida" )
     @Column(name = "id_bebida")
     private int id;
 
@@ -19,8 +21,8 @@ public class Bebida {
 
     private Double valor;
 
-    @OneToMany(mappedBy = "bebida", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<BebidaComanda> bebidaComandas;
+//    @OneToMany(mappedBy = "bebida")
+//    private List<BebidaComanda> bebidaComandas;
 
     public int getId() {
         return id;

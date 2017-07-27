@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,10 +9,11 @@ import java.util.List;
  */
 
 @Entity
-public class Pizza {
+public class Pizza implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "seq_pizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "pizza_seq", sequenceName = "pizza_seq",  allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "pizza_seq" )
     @Column(name = "id_pizza")
     private int id;
 
@@ -21,8 +23,8 @@ public class Pizza {
 
     private Double valor;
 
-    @OneToMany(mappedBy = "pizza")
-    private List<PizzaComanda> pizzaComandas;
+//    @OneToMany(mappedBy = "pizza")
+//    private List<PizzaComanda> pizzaComandas;
 
     public int getId() {
         return id;

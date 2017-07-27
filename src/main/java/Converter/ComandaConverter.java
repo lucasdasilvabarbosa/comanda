@@ -18,22 +18,10 @@ public class ComandaConverter {
         Comanda comanda = new Comanda();
         Mesa mesa = new Mesa(comandaDTO.getId_mesa());
 
-        List<PizzaComanda> pizzas = new ArrayList<PizzaComanda>();
-        List<BebidaComanda> bebidas = new ArrayList<BebidaComanda>();
-
         comanda.setId(comandaDTO.getId());
         comanda.setIdMesa(mesa);
 
-        for (PizzaComandaDTO p : comandaDTO.getPizzaDTOs()) {
-            pizzas.add(pizzaComandaConverter.converterParaEntity(p));
-        }
 
-        for (BebidaComandaDTO b : comandaDTO.getBebidaDTOs()) {
-            bebidas.add(bebidaComandaConverter.converterParaEntity(b));
-        }
-
-        comanda.setPizzas(pizzas);
-        comanda.setBebidas(bebidas);
 
         return comanda;
     }
@@ -53,6 +41,7 @@ public class ComandaConverter {
             bebidaComandaDTOs.add(bebidaComandaConverter.converterParaDTO(b));
         }
 
+        comandaDTO.setId(comanda.getId());
         comandaDTO.setPizzaDTOs(pizzaComandaDTOs);
         comandaDTO.setBebidaDTOs(bebidaComandaDTOs);
 

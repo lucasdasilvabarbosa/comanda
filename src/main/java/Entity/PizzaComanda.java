@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,10 +9,11 @@ import java.util.List;
  */
 
 @Entity
-public class PizzaComanda {
+public class PizzaComanda implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "seq_pizza_comanda", sequenceName = "seq_pedido", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "seq_pizza_comanda", sequenceName = "seq_pizza_comanda", allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "seq_pizza_comanda" )
     @Column(name = "id_pizza_comanda")
     private int id;
 

@@ -8,6 +8,7 @@ public class BebidaComandaDTO {
     private int idBebida;
     private String descricaoBebida;
     private int idComanda;
+    private double valor;
 
     public int getId() {
         return id;
@@ -39,5 +40,13 @@ public class BebidaComandaDTO {
 
     public void setIdComanda(int idComanda) {
         this.idComanda = idComanda;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

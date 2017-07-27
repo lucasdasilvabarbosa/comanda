@@ -13,6 +13,7 @@ public class PizzaConverter {
         pizza.setId(pizzaDTO.getId());
         pizza.setSabor(pizzaDTO.getSabor());
         pizza.setValor(pizzaDTO.getValor());
+        pizza.setDescricao(pizzaDTO.getDescricao());
         return pizza;
     }
 
@@ -22,6 +23,7 @@ public class PizzaConverter {
         pizzaDTO.setId(pizza.getId());
         pizzaDTO.setSabor(pizza.getSabor());
         pizzaDTO.setValor(pizza.getValor());
+        pizzaDTO.setDescricao(pizza.getDescricao());
 
         return pizzaDTO;
     }

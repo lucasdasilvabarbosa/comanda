@@ -1,9 +1,13 @@
 package Converter;
 
+import DTO.BebidaComandaDTO;
 import DTO.PizzaComandaDTO;
 import Entity.Comanda;
 import Entity.Pizza;
 import Entity.PizzaComanda;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lucas on 01/09/2016.
@@ -36,6 +40,16 @@ public class PizzaComandaConverter {
         pizzaComandaDTO.setSaborPizza(pizzaComanda.getPizza().getSabor());
 
         return pizzaComandaDTO;
+    }
+
+    public List<PizzaComanda> converterListaParaEntity(List<PizzaComandaDTO> pizzaComandaDTOs) {
+        List<PizzaComanda> pizzas = new ArrayList<>();
+
+        for (PizzaComandaDTO p : pizzaComandaDTOs) {
+            pizzas.add(converterParaEntity(p));
+        }
+
+        return pizzas;
     }
 
 }

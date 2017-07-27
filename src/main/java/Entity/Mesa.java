@@ -1,6 +1,7 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,10 +9,11 @@ import java.util.List;
  */
 
 @Entity
-public class Mesa {
+public class Mesa implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "seq_mesa", sequenceName = "seq_mesa", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "seq_mesa", sequenceName = "seq_mesa", allocationSize = 1)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "seq_mesa" )
     private int id;
 
     private int numeroDaMesa;

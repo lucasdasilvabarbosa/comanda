@@ -1,14 +1,24 @@
 package DTO;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import java.util.List;
 
 /**
+ * import org.codehaus.jackson.annotate.JsonBackReference;
+   import org.codehaus.jackson.annotate.JsonIgnore;
+   import org.codehaus.jackson.annotate.JsonManagedReference;
+ *
+ *
  * Created by lucas on 31/08/2016.
  */
 public class ComandaDTO {
     private int id;
     private int id_mesa;
+    @JsonManagedReference
     private List<PizzaComandaDTO> pizzaDTOs;
+    @JsonManagedReference
     private List<BebidaComandaDTO> bebidaDTOs;
 
     public ComandaDTO() {

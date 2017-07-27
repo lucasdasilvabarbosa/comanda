@@ -1,6 +1,8 @@
 package Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,9 +10,13 @@ import java.util.List;
  */
 
 @Entity
-public class Comanda {
+public class Comanda implements Serializable{
+
+    //@Generator(name = "seq_pedido", sequenceName = "seq_pedido", initialValue = 1, allocationSize = 1)
+
     @Id
-    @SequenceGenerator(name = "seq_pedido", sequenceName = "seq_pedido", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator( name = "comanda_seq", sequenceName = "comanda_seq", allocationSize = 1 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "comanda_seq" )
     @Column(name = "id_comanda")
     private int id;
 
@@ -18,11 +24,11 @@ public class Comanda {
     @ManyToOne
     private Mesa id_mesa;
 
-    @OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<PizzaComanda> pizzas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "comanda")
+    private List<PizzaComanda> pizzas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<BebidaComanda> bebidas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "comanda")
+    private List<BebidaComanda> bebidas = new ArrayList<>();
 
     public int getId() {
         return id;

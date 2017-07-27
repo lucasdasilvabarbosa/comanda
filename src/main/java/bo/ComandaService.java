@@ -1,9 +1,14 @@
 package bo;
 
+import Converter.BebidaComandaConverter;
+import Converter.BebidaConverter;
 import Converter.ComandaConverter;
+import Converter.PizzaComandaConverter;
 import DAO.ComandaDAO;
 import DTO.ComandaDTO;
+import Entity.BebidaComanda;
 import Entity.Comanda;
+import Entity.PizzaComanda;
 
 import javax.enterprise.context.Dependent;
 import java.util.ArrayList;
@@ -18,14 +23,36 @@ public class ComandaService {
 
     private  ComandaDAO comandaDAO = new ComandaDAO();
     private  ComandaConverter comandaConverter = new ComandaConverter();
+    private PizzaComandaConverter pizzaComandaConverter =new PizzaComandaConverter();
+    private BebidaComandaConverter bebidaComandaConverter =new BebidaComandaConverter();
 
     public ComandaDTO salvar(ComandaDTO comandaDTO){
 
         /**
-         *esse metodo antes de salvar converte a comanda de dto para um obj Entity
-         */
+         *esse metodo antes de salvar converte a comanda de dto para um obj Entity**/
+        List<PizzaComanda> pizzaComandas = pizzaComandaConverter.converterListaParaEntity(comandaDTO.getPizzaDTOs());
+        List<PizzaComanda> pizzasAux = new ArrayList<>();
+        List<BebidaComanda> bebidaComandas = bebidaComandaConverter.converterListaParaEntity(comandaDTO.getBebidaDTOs());
+        List<BebidaComanda> bebidasAux = new ArrayList<>();
+       comandaDTO.setBebidaDTOs(null);
+       comandaDTO.setPizzaDTOs(null);
+
        Comanda c =  comandaDAO.salvar(comandaConverter.converterParaEntity(comandaDTO));
-        return comandaConverter.converterParaDTO(c);
+
+        for (PizzaComanda p : pizzaComandas) {
+            p.getComanda().setId(c.getId());
+            pizzasAux.add(p);
+        }
+
+        for (BebidaComanda b : bebidaComandas) {
+            b.getComanda().setId(c.getId());
+            bebidasAux.add(b);
+        }
+        c.setPizzas(pizzasAux);
+        c.setBebidas(bebidasAux);
+        Comanda comandaAux = comandaDAO.salvar(c);
+
+       return comandaConverter.converterParaDTO(comandaAux);
     }
 
     public List<ComandaDTO> buscarTodos(){
