@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Dependent
-public class PizzaService {
+public class PizzaBO {
 
    private PizzaDAO pizzaDAO = new PizzaDAO();
    private PizzaConverter pizzaConverter = new PizzaConverter();

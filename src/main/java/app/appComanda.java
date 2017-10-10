@@ -1,6 +1,7 @@
 package app;
 
 
+import Entity.Mesa;
 import rest.*;
 
 import javax.ws.rs.ApplicationPath;
@@ -18,7 +19,7 @@ public class appComanda extends Application {
         public Set<Class<?>> getClasses(){
             Set<Class<?>> classes = new HashSet<Class<?>>();
             classes.add(PizzaController.class);
-            classes.add(mensagemController.class);
+            classes.add(MesaController.class);
             classes.add(ComandaController.class);
             classes.add(BebidaController.class);
             return classes;

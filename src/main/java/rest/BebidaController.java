@@ -1,8 +1,7 @@
 package rest;
 
 import DTO.BebidaDTO;
-import DTO.PizzaDTO;
-import bo.BebidaService;
+import bo.BebidaBO;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -15,7 +14,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/bebida")
 public class BebidaController {
-     BebidaService bebidaService = new BebidaService();
+     BebidaBO bebidaBO = new BebidaBO();
 
     @POST
     @Path("/salvar")
@@ -23,7 +22,7 @@ public class BebidaController {
     @Produces("application/json")
     public Response salvar(BebidaDTO bebidaDTO) {
 
-        BebidaDTO b = bebidaService.salvar(bebidaDTO);
+        BebidaDTO b = bebidaBO.salvar(bebidaDTO);
 
         return Response.status(200).entity(b).build();
     }

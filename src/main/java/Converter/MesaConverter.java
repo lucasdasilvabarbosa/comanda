@@ -3,6 +3,9 @@ package Converter;
 import DTO.MesaDTO;
 import Entity.Mesa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lucas on 31/08/2016.
  */
@@ -27,6 +30,16 @@ public class MesaConverter {
 
         return mesa;
 
+    }
+
+    public List<MesaDTO> converterListaParaDTO(List<Mesa> mesas){
+        List<MesaDTO> mesaDTOS = new ArrayList<>();
+
+        for(Mesa mesa : mesas){
+            mesaDTOS.add(converterParaDTO(mesa));
+        }
+
+        return mesaDTOS;
     }
 
 }

@@ -28,12 +28,14 @@ public class PizzaDAO {
             return p;
         } catch (Exception e) {
             tx.rollback();
+            e.getStackTrace();
         }
         return null;
     }
 
     public List<Pizza> buscarTodos() {
         Query consulta = em.createQuery("select p from Pizza p ORDER BY p.id");
+        System.out.println("listar pizzas");
         return consulta.getResultList();
 
     }

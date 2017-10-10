@@ -1,15 +1,12 @@
 package rest;
 
 import DTO.PizzaDTO;
-import Entity.Pizza;
-import bo.PizzaService;
+import bo.PizzaBO;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.*;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lucas on 27/07/2016.
@@ -20,7 +17,7 @@ public class PizzaController {
 
 
 
-    PizzaService pizzaService = new PizzaService();
+    PizzaBO pizzaBO = new PizzaBO();
 
 
     @POST
@@ -29,7 +26,7 @@ public class PizzaController {
     @Produces("application/json")
     public Response salvar(PizzaDTO pizzaDTO) {
 
-        PizzaDTO p = pizzaService.salvar(pizzaDTO);
+        PizzaDTO p = pizzaBO.salvar(pizzaDTO);
 
         return Response.status(200).entity(p).build();
     }
@@ -40,7 +37,7 @@ public class PizzaController {
     @Path("/lista")
     @Produces("application/json")
     public Response lista() {
-        return Response.status(200).entity(pizzaService.buscarTodos()).build();
+        return Response.status(200).entity(pizzaBO.buscarTodos()).build();
     }
 
 }

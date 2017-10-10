@@ -10,7 +10,7 @@ import Entity.Pizza;
 /**
  * Created by lucas on 19/04/2017.
  */
-public class BebidaService {
+public class BebidaBO {
     private BebidaDAO bebidaDAO = new BebidaDAO();
     private BebidaConverter  bebidaConverter= new BebidaConverter();
 

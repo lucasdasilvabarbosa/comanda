@@ -1,7 +1,9 @@
 package rest;
 
 import DTO.ComandaDTO;
-import bo.ComandaService;
+import DTO.MesaDTO;
+import bo.ComandaBO;
+import bo.MesaBO;
 
 
 import javax.ws.rs.*;
@@ -14,8 +16,8 @@ import java.util.List;
 
 @Path("/comanda")
 public class ComandaController {
-    ComandaService comandaService = new ComandaService();
-
+    ComandaBO comandaBO = new ComandaBO();
+    MesaBO mesaBO = new MesaBO();
 
     @POST
     @Path("/salvar")
@@ -23,7 +25,7 @@ public class ComandaController {
     @Consumes("application/json")
     public Response salvar(ComandaDTO comandaDTO) {
 
-        ComandaDTO c = comandaService.salvar(comandaDTO);
+        ComandaDTO c = comandaBO.salvar(comandaDTO);
         return Response.status(200).entity(c).build();
 
     }
@@ -32,7 +34,7 @@ public class ComandaController {
     @Path("/buscarcomandas")
     @Produces("application/json")
     public Response BuscarTodos(){
-        List<ComandaDTO> comandaDTOs = comandaService.buscarTodos();
+        List<ComandaDTO> comandaDTOs = comandaBO.buscarTodos();
         return Response.status(200).entity(comandaDTOs).build();
     }
 
@@ -41,9 +43,16 @@ public class ComandaController {
     @Produces("application/json")
     public Response buscarComanda(@PathParam("idMesa") int idMesa){
 
-      return Response.status(200).entity(comandaService.buscarComandaMesa(idMesa)).build();
+      return Response.status(200).entity(comandaBO.buscarComandaMesa(idMesa)).build();
     }
 
+    @POST
+    @Path("cria")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response criaComanda(MesaDTO mesaDTO){
+        return Response.status(200).entity(mesaBO.criarComanda(mesaDTO)).build();
+    }
 
 
 }

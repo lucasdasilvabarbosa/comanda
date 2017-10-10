@@ -12,10 +12,6 @@ public class MesaDTO {
 
     private boolean comandaAberta;
 
-    public MesaDTO(int id) {
-        this.id = id;
-    }
-
     public MesaDTO() {
     }
 

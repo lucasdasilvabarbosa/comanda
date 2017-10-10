@@ -6,8 +6,10 @@ import Converter.ComandaConverter;
 import Converter.PizzaComandaConverter;
 import DAO.ComandaDAO;
 import DTO.ComandaDTO;
+import DTO.MesaDTO;
 import Entity.BebidaComanda;
 import Entity.Comanda;
+import Entity.Mesa;
 import Entity.PizzaComanda;
 
 import javax.enterprise.context.Dependent;
@@ -19,12 +21,21 @@ import java.util.List;
  */
 
 @Dependent
-public class ComandaService {
+public class ComandaBO {
 
     private  ComandaDAO comandaDAO = new ComandaDAO();
     private  ComandaConverter comandaConverter = new ComandaConverter();
     private PizzaComandaConverter pizzaComandaConverter =new PizzaComandaConverter();
     private BebidaComandaConverter bebidaComandaConverter =new BebidaComandaConverter();
+
+    public ComandaDTO criaComanda(Mesa mesa){
+        Comanda c = new Comanda();
+
+        mesa.setComandaAberta(true);
+        c.setIdMesa(mesa);
+        return comandaConverter.converterParaDTO(comandaDAO.salvar(c));
+    }
+
 
     public ComandaDTO salvar(ComandaDTO comandaDTO){
 
