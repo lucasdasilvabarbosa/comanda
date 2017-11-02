@@ -1,6 +1,7 @@
 package rest;
 
 import DTO.MesaDTO;
+import Entity.Mesa;
 import bo.MesaBO;
 import org.jboss.logging.annotations.Pos;
 
@@ -19,6 +20,8 @@ public class MesaController {
     public Response inserirMesas(MesaDTO mesaDTO){
         return Response.status(200).entity(mesaBO.criarMesa(mesaDTO)).build();
     }
+
+
 
     @GET
     @Path("/lista")
