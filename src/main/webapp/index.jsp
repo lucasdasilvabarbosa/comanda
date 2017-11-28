@@ -4,7 +4,7 @@
     var data = JSON.stringify({
         "descricao": "muito boa",
         "sabor": "calabacon",
-        "valor": "15.50"
+        "valorBebida": "15.50"
     });
 
     var xhr = new XMLHttpRequest();

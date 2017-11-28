@@ -18,6 +18,7 @@ public class MesaBO {
 
       if(!mesa.isComandaAberta()){
          mesa.setComandaAberta(true);
+         mesaDAO.salvar(mesa);
          return comandaBO.criaComanda(mesa);
       }
 

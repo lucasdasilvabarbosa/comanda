@@ -39,7 +39,7 @@ public class ComandaController {
     }
 
     @GET
-    @Path("buscarComanda/{idMesa}")
+    @Path("/buscarcomanda/{idMesa}")
     @Produces("application/json")
     public Response buscarComanda(@PathParam("idMesa") int idMesa){
 

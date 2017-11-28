@@ -8,6 +8,7 @@ public class PizzaComandaDTO {
     private int idPizza;
     private String saborPizza;
     private int idComanda;
+    private Double valorPizza;
 
     public int getId() {
         return id;
@@ -39,5 +40,13 @@ public class PizzaComandaDTO {
 
     public void setIdComanda(int idComanda) {
         this.idComanda = idComanda;
+    }
+
+    public Double getValorPizza() {
+        return valorPizza;
+    }
+
+    public void setValorPizza(Double valorPizza) {
+        this.valorPizza = valorPizza;
     }
 }

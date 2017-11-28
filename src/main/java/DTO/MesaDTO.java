@@ -7,14 +7,8 @@ import Entity.Mesa;
  */
 public class MesaDTO {
     private int id;
-
     private int numeroDaMesa;
-
     private boolean comandaAberta;
-
-    public MesaDTO() {
-    }
-
 
 
     public int getId() {

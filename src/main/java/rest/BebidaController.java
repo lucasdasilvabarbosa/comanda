@@ -3,10 +3,7 @@ package rest;
 import DTO.BebidaDTO;
 import bo.BebidaBO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 /**
@@ -25,6 +22,13 @@ public class BebidaController {
         BebidaDTO b = bebidaBO.salvar(bebidaDTO);
 
         return Response.status(200).entity(b).build();
+    }
+
+    @GET
+    @Path("/lista")
+    @Produces("application/json")
+    public Response lista(){
+        return Response.status(200).entity(bebidaBO.listarBebidas()).build();
     }
 
 

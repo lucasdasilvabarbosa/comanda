@@ -25,6 +25,7 @@ public class BebidaComandaConverter {
         bebidaComanda.setId(bebidaComandaDTO.getId());
         bebidaComanda.setComanda(comanda);
         bebidaComanda.setBebida(bebida);
+        bebidaComanda.setValorBebida(bebidaComandaDTO.getValorBebida());
 
         return bebidaComanda;
 
@@ -35,7 +36,8 @@ public class BebidaComandaConverter {
         bebidaComandaDTO.setId(bebidaComanda.getId());
         bebidaComandaDTO.setIdBebida(bebidaComanda.getBebida().getId());
         bebidaComandaDTO.setDescricaoBebida(bebidaComanda.getBebida().getDescricao());
-        bebidaComandaDTO.setValor(bebidaComanda.getBebida().getValor());
+        bebidaComandaDTO.setValorBebida(bebidaComanda.getValorBebida());
+        bebidaComandaDTO.setIdComanda(bebidaComanda.getComanda().getId());
 
 
         return bebidaComandaDTO;

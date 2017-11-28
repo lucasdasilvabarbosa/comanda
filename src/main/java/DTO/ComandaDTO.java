@@ -1,7 +1,6 @@
 package DTO;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
-import org.codehaus.jackson.annotate.JsonBackReference;
 
 import java.util.List;
 
@@ -15,17 +14,14 @@ import java.util.List;
  */
 public class ComandaDTO {
     private int id;
-    private int id_mesa;
+    private int idMesa;
+    private Double valorComanda;
     @JsonManagedReference
     private List<PizzaComandaDTO> pizzaDTOs;
     @JsonManagedReference
     private List<BebidaComandaDTO> bebidaDTOs;
 
     public ComandaDTO() {
-    }
-
-    public ComandaDTO(int id_mesa) {
-        this.id_mesa = id_mesa;
     }
 
     public int getId() {
@@ -36,12 +32,12 @@ public class ComandaDTO {
         this.id = id;
     }
 
-    public int getId_mesa() {
-        return id_mesa;
+    public int getIdMesa() {
+        return idMesa;
     }
 
-    public void setId_mesa(int id_mesa) {
-        this.id_mesa = id_mesa;
+    public void setIdMesa(int idMesa) {
+        this.idMesa = idMesa;
     }
 
     public List<PizzaComandaDTO> getPizzaDTOs() {
@@ -58,5 +54,13 @@ public class ComandaDTO {
 
     public void setBebidaDTOs(List<BebidaComandaDTO> bebidaDTOs) {
         this.bebidaDTOs = bebidaDTOs;
+    }
+
+    public Double getValorComanda() {
+        return valorComanda;
+    }
+
+    public void setValorComanda(Double valorComanda) {
+        this.valorComanda = valorComanda;
     }
 }

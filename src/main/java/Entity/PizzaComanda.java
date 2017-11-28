@@ -26,6 +26,9 @@ public class PizzaComanda implements Serializable {
     @JoinColumn(name = "id_comanda")
     private Comanda comanda;
 
+
+    private Double valorPizza;
+
     public Comanda getComanda() {
         return comanda;
     }
@@ -48,5 +51,13 @@ public class PizzaComanda implements Serializable {
 
     public void setPizza(Pizza pizza) {
         this.pizza = pizza;
+    }
+
+    public Double getValorPizza() {
+        return valorPizza;
+    }
+
+    public void setValorPizza(Double valorPizza) {
+        this.valorPizza = valorPizza;
     }
 }

@@ -30,6 +30,8 @@ public class Comanda implements Serializable{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "comanda")
     private List<BebidaComanda> bebidas = new ArrayList<>();
 
+    private Double valorComanda;
+
     public int getId() {
         return id;
     }
@@ -54,11 +56,19 @@ public class Comanda implements Serializable{
         this.pizzas = pizzas;
     }
 
-    public Mesa getIdMesa() {
+    public Mesa getMesa() {
         return id_mesa;
     }
 
-    public void setIdMesa(Mesa idMesa) {
+    public void setMesa(Mesa idMesa) {
         this.id_mesa = idMesa;
+    }
+
+    public Double getValorComanda() {
+        return valorComanda;
+    }
+
+    public void setValorComanda(Double valorComanda) {
+        this.valorComanda = valorComanda;
     }
 }

@@ -24,6 +24,8 @@ public class BebidaComanda implements Serializable {
     @JoinColumn(name = "id_comanda")
     private Comanda comanda;
 
+    private Double valorBebida;
+
     public int getId() {
         return id;
     }
@@ -46,6 +48,14 @@ public class BebidaComanda implements Serializable {
 
     public void setComanda(Comanda comanda) {
         this.comanda = comanda;
+    }
+
+    public Double getValorBebida() {
+        return valorBebida;
+    }
+
+    public void setValorBebida(Double valorBebida) {
+        this.valorBebida = valorBebida;
     }
 }
 

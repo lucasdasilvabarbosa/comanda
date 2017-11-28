@@ -32,6 +32,7 @@ public class MesaDAO {
      return null;
     }
 
+
     public Mesa buscarPorId(Mesa mesa){
       return em.find(Mesa.class, mesa);
     }

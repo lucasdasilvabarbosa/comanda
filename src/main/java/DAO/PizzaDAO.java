@@ -34,7 +34,7 @@ public class PizzaDAO {
     }
 
     public List<Pizza> buscarTodos() {
-        Query consulta = em.createQuery("select p from Pizza p ORDER BY p.id");
+        Query consulta = em.createQuery("select p from Pizza p ORDER BY p.sabor");
         System.out.println("listar pizzas");
         return consulta.getResultList();
 

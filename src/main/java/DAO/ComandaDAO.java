@@ -40,7 +40,10 @@ public class ComandaDAO {
     }
 
     public Comanda buscarComandaMesa(int idMesa){
-        Query consulta = em.createQuery("select c from Comanda c, Mesa m WHERE c.id_mesa.id = m.id and m.comandaAberta");
+        Query consulta = em.createQuery("select c from Comanda c " +
+                                           "join fetch  c.id_mesa m " +
+                                           "where c.id_mesa.id = m.id and m.id =:idMesa");
+        consulta.setParameter("idMesa", idMesa);
         return (Comanda) consulta.getSingleResult();
     }
 

@@ -27,6 +27,7 @@ public class PizzaComandaConverter {
         pizzaComanda.setId(pizzaComandaDTO.getId());
         pizzaComanda.setComanda(comanda);
         pizzaComanda.setPizza(pizza);
+        pizzaComanda.setValorPizza(pizzaComandaDTO.getValorPizza());
 
         return pizzaComanda;
     }
@@ -38,6 +39,7 @@ public class PizzaComandaConverter {
         pizzaComandaDTO.setIdComanda(pizzaComanda.getComanda().getId());
         pizzaComandaDTO.setIdPizza(pizzaComanda.getPizza().getId());
         pizzaComandaDTO.setSaborPizza(pizzaComanda.getPizza().getSabor());
+        pizzaComandaDTO.setValorPizza(pizzaComanda.getValorPizza());
 
         return pizzaComandaDTO;
     }
