@@ -22,8 +22,9 @@ public class BebidaDAO {
 
     public Bebida salvar(Bebida bebida) {
         EntityTransaction tx = em.getTransaction();
-        Bebida b;
+
         try {
+            Bebida b;
             tx.begin();
             b = em.merge(bebida);
             tx.commit();

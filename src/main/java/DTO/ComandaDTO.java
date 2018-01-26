@@ -21,6 +21,8 @@ public class ComandaDTO {
     @JsonManagedReference
     private List<BebidaComandaDTO> bebidaDTOs;
 
+    private boolean comandaFinalizada;
+
     public ComandaDTO() {
     }
 
@@ -62,5 +64,13 @@ public class ComandaDTO {
 
     public void setValorComanda(Double valorComanda) {
         this.valorComanda = valorComanda;
+    }
+
+    public boolean isComandaFinalizada() {
+        return comandaFinalizada;
+    }
+
+    public void setComandaFinalizada(boolean comandaFinalizada) {
+        this.comandaFinalizada = comandaFinalizada;
     }
 }

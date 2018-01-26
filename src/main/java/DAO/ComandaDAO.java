@@ -39,12 +39,14 @@ public class ComandaDAO {
         return consulta.getResultList();
     }
 
+
     public Comanda buscarComandaMesa(int idMesa){
-        Query consulta = em.createQuery("select c from Comanda c " +
-                                           "join fetch  c.id_mesa m " +
-                                           "where c.id_mesa.id = m.id and m.id =:idMesa");
-        consulta.setParameter("idMesa", idMesa);
+        Query consulta = em.createQuery("select c from Comanda c "
+                +"join fetch  c.id_mesa m "
+                +"where c.id_mesa.id = m.id and m.id =:idMesa");
+                consulta.setParameter("idMesa", idMesa);;
+        Comanda comanda = (Comanda) consulta.getSingleResult();
+        System.out.println("Buscar Comanda da mesa: "+idMesa+" comanda: "+comanda.getId());
         return (Comanda) consulta.getSingleResult();
     }
-
 }

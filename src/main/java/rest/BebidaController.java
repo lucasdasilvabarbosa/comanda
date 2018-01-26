@@ -28,6 +28,7 @@ public class BebidaController {
     @Path("/lista")
     @Produces("application/json")
     public Response lista(){
+        System.out.println("chamou bebidas");
         return Response.status(200).entity(bebidaBO.listarBebidas()).build();
     }
 

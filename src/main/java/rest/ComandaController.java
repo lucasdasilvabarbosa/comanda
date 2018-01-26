@@ -55,4 +55,20 @@ public class ComandaController {
     }
 
 
+    @POST
+    @Path("/finalizar")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response finalizarComanda(ComandaDTO comandaDTO){
+        ComandaDTO comandaRetorno = comandaBO.finalizarComanda(comandaDTO);
+
+        if (comandaRetorno.isComandaFinalizada()){
+            System.out.println("conseguiu finalizar");
+            return Response.status(200).entity(comandaRetorno).build();
+        }
+        System.out.println("não conseguiu finalizar");
+        return Response.status(501).entity(comandaDTO).build();
+    }
+
+
 }

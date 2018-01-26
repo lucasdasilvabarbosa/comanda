@@ -1,5 +1,6 @@
 package Entity;
 
+import javax.enterprise.inject.Default;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ public class Comanda implements Serializable{
     private List<BebidaComanda> bebidas = new ArrayList<>();
 
     private Double valorComanda;
+
+    @Column(name="comandaFinalizada", nullable = false, columnDefinition="boolean default false")
+    private boolean comandaFinalizada;
 
     public int getId() {
         return id;
@@ -70,5 +74,13 @@ public class Comanda implements Serializable{
 
     public void setValorComanda(Double valorComanda) {
         this.valorComanda = valorComanda;
+    }
+
+    public boolean isComandaFinalizada() {
+        return comandaFinalizada;
+    }
+
+    public void setComandaFinalizada(boolean comandaFinalizada) {
+        this.comandaFinalizada = comandaFinalizada;
     }
 }

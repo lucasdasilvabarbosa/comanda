@@ -21,6 +21,7 @@ public class ComandaConverter {
         comanda.setId(comandaDTO.getId());
         comanda.setMesa(mesa);
         comanda.setValorComanda(comandaDTO.getValorComanda());
+        comanda.setComandaFinalizada(comandaDTO.isComandaFinalizada());
 
 
         return comanda;
@@ -29,7 +30,7 @@ public class ComandaConverter {
     public ComandaDTO converterParaDTO(Comanda comanda) {
         ComandaDTO comandaDTO = new ComandaDTO();
         comandaDTO.setIdMesa(comanda.getMesa().getId());
-
+        comandaDTO.setComandaFinalizada(comanda.isComandaFinalizada());
 
         List<PizzaComandaDTO> pizzaComandaDTOs = new ArrayList<PizzaComandaDTO>();
         List<BebidaComandaDTO> bebidaComandaDTOs = new ArrayList<BebidaComandaDTO>();

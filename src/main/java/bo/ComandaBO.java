@@ -36,9 +36,9 @@ public class ComandaBO {
 
 
     public ComandaDTO salvar(ComandaDTO comandaDTO) {
- /*
- *esse metodo antes de salvar converte a comanda de dto para um obj Entity
-  **/
+        /*
+        *esse metodo antes de salvar converte a comanda de dto para um obj Entity
+         **/
         List<PizzaComanda> pizzaComandas = pizzaComandaConverter.converterListaParaEntity(comandaDTO.getPizzaDTOs());
         List<PizzaComanda> pizzasAux = new ArrayList<>();
         List<BebidaComanda> bebidaComandas = bebidaComandaConverter.converterListaParaEntity(comandaDTO.getBebidaDTOs());
@@ -79,6 +79,19 @@ public class ComandaBO {
     public ComandaDTO buscarComandaMesa(int id_mesa) {
         Comanda comanda = comandaDAO.buscarComandaMesa(id_mesa);
         ComandaDTO comandaDTO = comandaConverter.converterParaDTO(comanda);
+
+        return comandaDTO;
+    }
+
+    public ComandaDTO finalizarComanda(ComandaDTO comandaDTO){
+
+        if(comandaDTO.getBebidaDTOs() != null && comandaDTO.getBebidaDTOs().size() > 0 || comandaDTO.getPizzaDTOs() != null && comandaDTO.getPizzaDTOs().size() > 0){
+            comandaDTO.setComandaFinalizada(true);
+            comandaDTO = comandaConverter
+                    .converterParaDTO(
+                            comandaDAO.salvar(comandaConverter.converterParaEntity(comandaDTO)));
+        }
+
 
         return comandaDTO;
     }
