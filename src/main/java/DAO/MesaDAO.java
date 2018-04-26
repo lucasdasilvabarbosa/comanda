@@ -38,7 +38,7 @@ public class MesaDAO {
     }
 
     public List<Mesa> busrcarTodos() {
-        Query consulta = em.createQuery(" from Mesa m order by m.id");
+        Query consulta = em.createQuery("select m from Mesa m order by m.id");
         return consulta.getResultList();
     }
 }

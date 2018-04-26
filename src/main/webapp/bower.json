@@ -1,0 +1,25 @@
+{
+  "name": "comandaapp",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.11.4",
+    "material-design-lite": "~1.0.6",
+    "angular-new-router": "~0.5.3"
+  },
+  "resolutions": {
+    "angular": "1.6.9",
+    "angular-material": "^1.1.6"
+  }
+}

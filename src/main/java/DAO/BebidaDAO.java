@@ -36,7 +36,7 @@ public class BebidaDAO {
     }
 
     public List<Bebida> buscarTodos(){
-        Query consulta = em.createQuery("from Bebida b order by b.descricao");
+        Query consulta = em.createQuery("select b from Bebida b order by b.descricao");
         return consulta.getResultList();
     }
 

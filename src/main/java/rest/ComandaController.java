@@ -63,7 +63,7 @@ public class ComandaController {
         ComandaDTO comandaRetorno = comandaBO.finalizarComanda(comandaDTO);
 
         if (comandaRetorno.isComandaFinalizada()){
-            System.out.println("conseguiu finalizar");
+            System.out.println("conseguiu finalizar "+comandaDTO.getId()+" mesa:"+comandaDTO.getIdMesa()+" bolean: "+comandaDTO.isComandaFinalizada());
             return Response.status(200).entity(comandaRetorno).build();
         }
         System.out.println("não conseguiu finalizar");

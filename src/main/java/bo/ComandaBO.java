@@ -4,6 +4,7 @@ import Converter.BebidaComandaConverter;
 import Converter.ComandaConverter;
 import Converter.PizzaComandaConverter;
 import DAO.ComandaDAO;
+import DAO.MesaDAO;
 import DTO.ComandaDTO;
 import Entity.BebidaComanda;
 import Entity.Comanda;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @Dependent
 public class ComandaBO {
-
+    MesaDAO mesaDAO = new MesaDAO();
     private ComandaDAO comandaDAO = new ComandaDAO();
     private ComandaConverter comandaConverter = new ComandaConverter();
     private PizzaComandaConverter pizzaComandaConverter = new PizzaComandaConverter();
@@ -87,9 +88,14 @@ public class ComandaBO {
 
         if(comandaDTO.getBebidaDTOs() != null && comandaDTO.getBebidaDTOs().size() > 0 || comandaDTO.getPizzaDTOs() != null && comandaDTO.getPizzaDTOs().size() > 0){
             comandaDTO.setComandaFinalizada(true);
+            Comanda comanda = comandaConverter.converterParaEntity(comandaDTO);
+            Mesa mesa = comanda.getMesa();
+            mesa.setComandaAberta(false);
+            mesa.setNumeroDaMesa(mesa.getId());
+            mesaDAO.salvar(mesa);
             comandaDTO = comandaConverter
                     .converterParaDTO(
-                            comandaDAO.salvar(comandaConverter.converterParaEntity(comandaDTO)));
+                            comandaDAO.salvar(comanda));
         }
 
 

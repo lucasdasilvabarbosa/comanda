@@ -22,6 +22,7 @@ public class appComanda extends Application {
             classes.add(MesaController.class);
             classes.add(ComandaController.class);
             classes.add(BebidaController.class);
+            classes.add(UsuarioController.class);
             return classes;
         }
 }
