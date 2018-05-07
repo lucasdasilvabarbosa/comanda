@@ -26,6 +26,8 @@ public class PizzaComanda implements Serializable {
     @JoinColumn(name = "id_comanda")
     private Comanda comanda;
 
+    @Column(name = "entreguePelaCozinha",nullable = false, columnDefinition="boolean default false")
+    private boolean entreguePelaCozinha;
 
     private Double valorPizza;
 
@@ -59,5 +61,13 @@ public class PizzaComanda implements Serializable {
 
     public void setValorPizza(Double valorPizza) {
         this.valorPizza = valorPizza;
+    }
+
+    public boolean isEntreguePelaCozinha() {
+        return entreguePelaCozinha;
+    }
+
+    public void setEntreguePelaCozinha(boolean entreguePelaCozinha) {
+        this.entreguePelaCozinha = entreguePelaCozinha;
     }
 }

@@ -24,9 +24,12 @@ public class UsuarioController {
 
            if(usuarioApp.getSenha() != null && !usuarioApp.getSenha().equals("")){
                if(usuarioApp.getSenha().equals(usuario.getSenha())){
+                   System.out.println("logou");
                    return Response.status(200).entity(usuario).build();
-               }else
+               }else {
+                   System.out.println("não logou");
                    return Response.status(400).build();
+               }
            }
 
         }
